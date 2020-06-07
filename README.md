@@ -66,3 +66,77 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+安装方式
+1. =》 yarn create react-app my-app
+2. =》 yarn start  或者 npm start
+
+安装antd
+ yarn add antd --save 或者 npm install antd --save
+
+配置按需加载  - 如果安装不成功可以试试cnpm
+ yarn add react-app-rewired customize-cra babel-plugin-import -D  
+    //根⽬目录创建config-overrides.js
+    const { override, fixBabelImports } = require("customize-cra");
+    module.exports = override(
+    fixBabelImports("import", {//antd按需加载
+    libraryName: "antd",
+    libraryDirectory: "es",
+    style: "css"
+    })
+    );
+
+    //修改package.json
+    "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+    },
+
+支持装饰器器配置
+ yarn add -D @babel/plugin-proposal-decorators
+    //在config-overrides.js里面添加addDecoratorsLegacy
+    const { addDecoratorsLegacy } = require("customize-cra");
+    module.exports = override(
+    ...,
+    addDecoratorsLegacy()//配置装饰器器
+    );
+
+
+安装redux
+npm install redux --save
+
+
+安装react-redux
+npm install react-redux --save
+
+此处如果使⽤用装饰器器， cra 项⽬目的话请先执⾏行行以下步骤
+npm run eject npm install @babel/plugin-proposal-decorators
+在 package.json ⾥里里的 babel 项加⼊入 plugins ，具体如下：
+"babel": {
+"plugins": [
+   [
+      "@babel/plugin-proposal-decorators",
+      {
+         "legacy": true
+      }
+   ]
+],
+"presets": [
+      "react-app"
+   ]
+}
+
+安装redux中间件
+npm install redux-thunk redux-logger --save
+
+安装路由
+npm install react-router-dom --save
+
+
+安装redux-saga   
+redux-saga使副作⽤用（数据获取、浏览器器缓存获取）易易于管
+理理、执⾏行行、测试和失败处理理
+npm install --save redux-saga
