@@ -9,10 +9,12 @@ import ReduxDemo2 from './Redux2';
 import ReduxPrinciple from './ReduxPrinciple';
 import ReactReduxPrinciple from './ReactReduxPrinciple';
 import RouterDemo from './Router';
+import HooksDemo from './Hooks';
 
 function App() {
   return (
     <div className="App">
+      <HooksDemo />
       <ReduceDemo />
       <ReduxDemo />
       <ReduxDemo2 />
